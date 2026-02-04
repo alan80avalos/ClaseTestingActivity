@@ -1,0 +1,25 @@
+{
+  "name": "clasetestingactivity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helloWorldJS.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alan80avalos/ClaseTestingActivity.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alan80avalos/ClaseTestingActivity/issues"
+  },
+  "homepage": "https://github.com/alan80avalos/ClaseTestingActivity#readme",
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "globals": "^17.3.0"
+  }
+}
