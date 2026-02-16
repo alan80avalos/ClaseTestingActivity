@@ -1,4 +1,4 @@
-name: ESLint Check
+name: Lint JS
 
 on: [push, pull_request]
 
