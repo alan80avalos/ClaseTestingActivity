@@ -1,0 +1,138 @@
+Equivalence Partitioning
+
+1. Function that validates credit card numbers.
+   - Valid card numbers: Length between 13 and 16 digits, containing only numeric digits.
+- Test Case 1°: 12345, Resultado esperado de tarjeta invalida por tener solo 5 digitos
+- Test Case 2°: 12345678912345, Resultado esperado de tarjeta valida
+- Test Case 3°: 1234567891234567891, Resultado esperado de tarjeta invalida por tener mas de 16 digitos
+- Test Case 4°: 123456789-12345, Resultado esperado de tarjeta invalida por tener un numero negativo
+- Test Case 4°: NULL, Resultado esperado tarjeta invalida por campo vacio
+
+2. Function that validates dates.
+   - Valid years: Between 1900 and 2100.
+   - Valid months: Between 1 and 12.
+   - Valid days: Between 1 and 31.
+   (Suponiendo que usa el formato estaunidense)
+- Test Case 1°: 01/10/2005, Resultado esperado de fecha valida 
+- Test Case 2°: 01/10/1800, Resultado esperado de fecha invalida por ser menor a año 1900
+- Test Case 3°: 01/10/2150, Resultado esperado de fecha invalida por ser mayor a año 2100
+- Test Case 5°: 00/05/2006, Resultado esperado de fecha invalida por ser menor a mes 1
+- Test Case 6°: 60/05/2006, Resultado esperado de fecha invalida por ser mayor a mes 12
+- Test Case 7°: 11/00/2027, Resultado esperado de fecha invalida por ser menor a dia 1
+- Test Case 8°: 11/39/2027, Resultado esperado de fecha invalida por ser mayor a dia 31
+- Test Case 9°: 2005/02/15, Resultado esperado de fecha invalida por formato incorrecto
+- Test Case 10°: -01/10/2017, Resultado esperado de fecha invalida por valores negativos
+- Test Case 11°: -01/OCT/2005, Resultado esperado de fecha invalida por formato en caracteres
+
+3. Function that checks the eligibility of a passenger to book a flight.
+   - Eligible ages: Between 18 and 65.
+   - Frequent flyers: True or False.
+- Test Case 1°: 20 años y True, Resultado esperado valido
+- Test Case 2°: 25 años y False, Resultado esperado valido
+- Test Case 3°: 15 años y True, Resultado esperado de invalido por ser menor a 18
+- Test Case 4°: 78 años y False, Resultado esperado de invalido por ser mayor a 65
+- Test Case 5°: 60 años y Negative, Resultado esperado de invalido por no estar detro de las opciones esperadas
+
+4. Function that validates URLs.
+   - Valid URLs: Length less than or equal to 255, starting with "http://" or "https://".
+- Test Case 1°: http:// y longitud de 200, Resultado esperado de URL valida
+- Test Case 2°: https:// y longitud de 250, Resultado esperado de URL valida
+- Test Case 3°: https:// y longitud de 300, Resultado esperado de URL invalida por superar la longitud de 255
+- Test Case 4°: hola:// y longitud de 150, Resultado esperado de URL invalida por no empezar con https:// o https://
+- Test Case 5°: NULL, Resultado esperado de URL invalido por enviar algo vacío.
+
+
+
+
+Boundary Value Analysis
+
+1. Function that calculates the eligibility of a person for a loan based on their income and credit score.
+   The eligibility rules are as follows:
+   - If the income is less than $30,000, the person is not eligible for a loan.
+   - If the income is between $30,000 and $60,000 (inclusive) and the credit score is above 700, the person is eligible for a standard loan.
+   - If the income is between $30,000 and $60,000 (inclusive) and the credit score is below or equal to 700, the person is eligible for a secured loan.
+   - If the income is greater than $60,000 and the credit score is above 750, the person is eligible for a premium loan.
+   - If the income is greater than $60,000 and the credit score is between 700 and 750 (inclusive), the person is eligible for a standard loan.
+
+- Test Case 1°: 29,999 y credit 710, Resultado esperado de no es elegible
+- Test Case 2°: 30,000 y credit 710, Resultado esperado de es elegible para estandar
+- Test Case 3°: 30,001 y credit 710, Resultado esperado de es elegible para estandar (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 4°: 59,999 y credit 710, Resultado esperado de es elegible para estandar (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 5°: 60,000 y credit 710, Resultado esperado de es elegible para estandar
+- Test Case 6°: 60,001 y credit 710, Resultado esperado de es elegible para estandar
+
+- Test Case 7°: 65,000 y credit 699, Resultado esperado invalida(aunque parece no manejarse <700)
+- Test Case 8°: 65,000 y credit 700, Resultado esperado de elegible para estandar
+- Test Case 9°: 65,000 y credit 701, Resultado esperado de elegible para estandar
+- Test Case 10°: 65,000 y credit 749, Resultado esperado de elegible para estandar (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 11°: 65,000 y credit 750, Resultado esperado de elegible para estandar
+- Test Case 12°: 65,000 y credit 751, Resultado esperado de elegible para premium
+
+CASOS QUE NO LLEGAN A SECURED LOAN SOLO HACIENDO LO ANTERIOR
+- Test Case 13°: 40,000 y credit 699, Resultado esperado de elegible para prestamo con garantia
+- Test Case 14°: 40,000 y credit 700, Resultado esperado de elegible para prestamo con garantia
+- Test Case 15°: 40,000 y credit 701, Resultado esperado de elegible para standard (TEST CASE QUE PODRIA NO PONERSE)
+
+2. Function that determines the category of a product in an e-commerce system based on its price.
+   The product categories and pricing rules are as follows:
+   - Category A: Products priced between $10 and $50 (inclusive).
+   - Category B: Products priced between $51 and $100 (inclusive).
+   - Category C: Products priced between $101 and $200 (inclusive).
+   - Category D: Products priced above $200.
+- Test Case 1°: 9, Resultado esperado es que sea invalido
+- Test Case 2°: 10, Resultado esperado es que sea valido y quede en la categoria A
+- Test Case 9°: 11, Resultado esperado es que sea valido y quede en la categoria A (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 10°: 49, Resultado esperado es que sea valido y quede en la categoria A (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 3°: 50, Resultado esperado es que sea valido y quede en la categoria A
+- Test Case 4°: 51, Resultado esperado es que sea valido y quede en la categoria B
+- Test Case 11°: 52, Resultado esperado es que sea valido y quede en la categoria B (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 12°: 99, Resultado esperado es que sea valido y quede en la categoria B (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 5°: 100, Resultado esperado es que sea valido y quede en la categoria B
+- Test Case 6°: 101, Resultado esperado es que sea valido y quede en la categoria C
+- Test Case 13°: 102, Resultado esperado es que sea valido y quede en la categoria C (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 14°: 199, Resultado esperado es que sea valido y quede en la categoria C (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 7°: 200, Resultado esperado es que sea valido y quede en la categoria C
+- Test Case 8°: 201, Resultado esperado es que sea valido y quede en la categoria D
+
+3. Function that calculates the cost of shipping for packages based on their weight and dimensions.
+   The shipping cost rules are as follows:
+   - If the weight of the package is less than or equal to 1 kg and the dimensions (length, width, and height) are each less than or equal to 10 cm, the cost is $5.
+   - If the weight is between 1 and 5 kg (inclusive) and the dimensions are each between 11 and 30 cm (inclusive), the cost is $10.
+   - If the weight is greater than 5 kg or any of the dimensions is greater than 30 cm, the cost is $20.
+- Test Case 1°: 0.99kg y dimensiones 7cm, Resultado esperado es que sea valido y costo de $5
+- Test Case 1°: 1.00kg y dimensiones 7cm, Resultado esperado es que sea valido y costo de $5 
+- Test Case 1°: 1.01kg y dimensiones 7cm, Resultado esperado es que sea indefinido (aunque parece no manejarse) (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 1°: 4.99kg y dimensiones 15cm, Resultado esperado es que sea valido y costo de $10 (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 1°: 5.00kg y dimensiones 15cm, Resultado esperado es que sea valido y costo de $10
+- Test Case 1°: 5.01kg y dimensiones 31cm, Resultado esperado es que sea valido y costo de $10
+
+- Test Case 1°: 0.04kg y dimensiones 9cm, Resultado esperado es que sea valido y costo de $5
+- Test Case 1°: 0.04kg y dimensiones 10cm, Resultado esperado es que sea valido y costo de $5
+- Test Case 1°: 2.04kg y dimensiones 11cm, Resultado esperado es que sea valido y costo de $10
+- Test Case 1°: 2.04kg y dimensiones 12cm, Resultado esperado es que sea valido y costo de $10 (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 1°: 2.04kg y dimensiones 29cm, Resultado esperado es que sea valido y costo de $10 (TEST CASE QUE PODRIA NO PONERSE)
+- Test Case 1°: 0.04kg y dimensiones 30cm, Resultado esperado es que sea valido y costo de $10
+- Test Case 1°: 7.04kg y dimensiones 31cm, Resultado esperado es que sea valido y costo de $20
+
+Decision Table
+
+1. Create the decision table for a system that provides weather advisories based on temperature and humidity.
+   The rules are:
+   - Weather recommendation "High temperature and humidity. Stay hydrated." for temperature > 30 and humidity > 70.
+   - Weather recommendation "Low temperature. Don't forget your jacket!" for temperature < 0 and any humidity.
+   - No weather recommendation for any other temperature and humidity combination.
+
+Temp>30  | Temp < 0  | Humedad>70   | Resultado
+ Si      |   No      |   Si         | Mantenerse hidradato
+   No    |   Si      |              | Usar chaketa
+any      |  any      |  any         | invalido
+2. Create the decision table for a system that authenticates users based on their username and password.
+   The rules are:
+   - Returns "Admin" for username "admin" and password "admin123".
+   - Returns "User" for any other username with at least 5 characters and password with at least 8 characters.
+   - Returns "Invalid" if the username or password lenghts are not met.
+username = admin  | contraseña = admin123    | username length >= 5  | password lenght >= 8  | Resultado
+   Si             |           Si             |           Si          |         Si            | Admin
+   No             |           no             |           Si          |           Si          |  User
+   any            |           any            |            any        |           any         |     fall
+
